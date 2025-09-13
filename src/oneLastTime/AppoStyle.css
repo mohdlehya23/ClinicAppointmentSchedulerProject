@@ -1,0 +1,59 @@
+/*;
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Aug 21, 2025, 10:08:29 PM
+    Author     : NITRO5
+*/
+.table-view {
+    -fx-background-color: #1e1e2e;   /* خلفية الجدول */
+    -fx-border-color: #2f2f3f;
+    -fx-border-width: 1px;
+    -fx-selection-bar: #3f96ff;      /* صف محدد */
+    -fx-selection-bar-non-focused: #3a3a50;
+    -fx-text-background-color: white;
+}
+
+/* عناوين الأعمدة */
+.table-view .column-header {
+    -fx-background-color: #2b2b3c;
+    -fx-border-color: #3c3c4d;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* الصفوف */
+.table-row-cell {
+    -fx-background-color: #1e1e2e;
+    -fx-text-fill: white;
+}
+
+/* صفوف متناوبة */
+.table-row-cell:odd {
+    -fx-background-color: #252535;
+}
+
+/* الصف المحدد */
+.table-row-cell:selected {
+    -fx-background-color: #3f96ff;
+    -fx-text-fill: white;
+}
+
+/* النص داخل الخلايا */
+.table-cell {
+    -fx-text-fill: white;
+    -fx-alignment: CENTER_LEFT; /* محاذاة النص لليسار */
+}
+
+/* التمرير */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #1e1e2e;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #3f96ff;
+    -fx-background-radius: 5px;
+}
