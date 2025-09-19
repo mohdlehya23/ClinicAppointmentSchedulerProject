@@ -1,0 +1,15 @@
+
+.list-view {
+    -fx-font-size: 12px;
+    -fx-control-inner-background: #DDDEE1;
+}
+
+.list-cell {
+    -fx-background-color: #DDDEE1;
+    -fx-text-fill: black; /* ensure text is visible */
+}
+
+.list-cell:filled:selected, .list-cell:filled:selected:hover {
+    -fx-background-color: #a8b2c3; /* custom highlight */
+    -fx-text-fill: white;
+}

@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainBoarderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="1320.0" style="-fx-background-color: #223243;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oneLastTime.DashboardController">
+   <top>
+      <HBox fx:id="hboxNav" prefHeight="74.0" prefWidth="1283.0" spacing="250.0" styleClass="borders" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hboxTitle" alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="341.0">
+               <children>
+                  <Label fx:id="welcome" prefHeight="37.0" prefWidth="148.0" text="Welcome" textFill="#e8e1e1">
+                     <font>
+                        <Font name="Rockwell Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="firstname" alignment="CENTER" prefHeight="37.0" prefWidth="198.0" styleClass="labelFirsrname" stylesheets="@newCascadeStyleSheet.css" text="User">
+                     <font>
+                        <Font name="Rockwell Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="hboxSearch" alignment="CENTER" prefHeight="72.0" prefWidth="485.0">
+               <children>
+                  <ImageView fx:id="searchicon" fitHeight="36.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/search.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="searchbar" prefHeight="33.0" prefWidth="444.0" promptText="Search across your dashboard" styleClass="search" stylesheets="@newCascadeStyleSheet.css">
+                     <font>
+                        <Font name="Rockwell Bold" size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox fx:id="vboxSidebar" prefHeight="848.0" prefWidth="91.0" styleClass="borders" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hboxSpaceing" prefHeight="126.0" prefWidth="89.0" />
+            <ImageView fx:id="doctors" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#toDoctors" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/medical-team.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="patients" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#toPatient" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/patient.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="appointment" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#toAppointment" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/appointment.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="analytics" fitHeight="48.0" fitWidth="45.0" onMouseClicked="#drawChart" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/erp.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="200.0" left="20.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="logout" fitHeight="63.0" fitWidth="51.0" onMouseClicked="#handleLogout" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/exit.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox fx:id="vboxDisplay" prefHeight="755.0" prefWidth="1163.0" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hboxTtile" prefHeight="77.0" prefWidth="1202.0">
+               <children>
+                  <Label fx:id="dashboardTitle" prefHeight="77.0" prefWidth="249.0" text="Clinic dashboard" textFill="#e8e1e1">
+                     <font>
+                        <Font name="Rockwell Bold" size="28.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="hboxCards" prefHeight="452.0" prefWidth="800.0" spacing="60.0">
+               <children>
+                  <VBox fx:id="vboxOut1" prefHeight="473.0" prefWidth="373.0" styleClass="bordersExternal" stylesheets="@newCascadeStyleSheet.css">
+                     <HBox.margin>
+                        <Insets left="20.0" right="15.0" />
+                     </HBox.margin>
+                     <children>
+                        <VBox fx:id="vboxIn1" alignment="CENTER" prefHeight="447.0" prefWidth="373.0" styleClass="bordersInternal" stylesheets="@newCascadeStyleSheet.css">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fx:id="bookAppointment" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="-30.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../images/appointment-book.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="labelrandom1" alignment="CENTER" prefHeight="64.0" prefWidth="288.0" text="Want to reserve an appointment quickly? Click Add button below" textFill="#e8e1e1" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="35.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="buttonNewAppointment" alignment="CENTER" mnemonicParsing="false" onAction="#chandleCreateAppointment" prefHeight="47.0" prefWidth="296.0" styleClass="buttonNew" stylesheets="@newCascadeStyleSheet.css" text="Add" textFill="WHITE">
+                                 <font>
+                                    <Font name="Rockwell Bold" size="23.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vboxOut2" layoutX="50.0" layoutY="10.0" prefHeight="508.0" prefWidth="373.0" styleClass="bordersExternal" stylesheets="@newCascadeStyleSheet.css">
+                     <children>
+                        <VBox fx:id="vboxIn2" alignment="CENTER" prefHeight="447.0" prefWidth="373.0">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox fx:id="hboxUpcomingContainer" prefHeight="57.0" prefWidth="331.0">
+                                 <children>
+                                    <Label fx:id="upcomingTitle" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="275.0" text="Upcoming appointments" textFill="#dafcf4">
+                                       <font>
+                                          <Font name="Rockwell Bold" size="22.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="upcomingTable" prefHeight="274.0" prefWidth="351.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPatient" prefWidth="119.0" text="Patient" />
+                                    <TableColumn fx:id="colDoctor" prefWidth="119.0" text="Doctor" />
+                                    <TableColumn fx:id="colTime" minWidth="0.0" prefWidth="108.0" text="Time" />
+                                 </columns>
+                                 <VBox.margin>
+                                    <Insets top="8.0" />
+                                 </VBox.margin>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <Button fx:id="buttonRefreshTable" alignment="CENTER" mnemonicParsing="false" onAction="#handleRefreshTable" prefHeight="47.0" prefWidth="323.0" styleClass="buttonNew" stylesheets="@newCascadeStyleSheet.css" text="Refresh" textFill="WHITE">
+                                 <font>
+                                    <Font name="Rockwell Bold" size="23.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="vboxOut3" layoutX="50.0" layoutY="10.0" prefHeight="473.0" prefWidth="373.0" styleClass="bordersExternal" stylesheets="@newCascadeStyleSheet.css">
+                     <children>
+                        <VBox fx:id="vboxIn3" prefHeight="447.0" prefWidth="373.0" styleClass="bordersInternal" stylesheets="@newCascadeStyleSheet.css">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox fx:id="hboxAnalyticTitle" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="analyticTitle" alignment="BOTTOM_LEFT" prefHeight="51.0" prefWidth="250.0" styleClass="labelClinicAnalytics" stylesheets="@newCascadeStyleSheet.css" text="Clinic Analysis" textFill="#e8e1e1">
+                                       <font>
+                                          <Font name="Rockwell Bold" size="28.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="25.0" top="8.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <AnchorPane fx:id="anchPaneAnalyticChart" prefHeight="332.0" prefWidth="345.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
+<!--<?import javafx.scene.Cursor?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainBoarderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="1320.0" style="-fx-background-color: #223243;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oneLastTime.DashboardController">
+   <top>
+      <HBox fx:id="hboxNav" prefHeight="74.0" prefWidth="1283.0" spacing="250.0" styleClass="borders" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hboxTitle" alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="341.0">
+               <children>
+                  <Label fx:id="welcome" prefHeight="37.0" prefWidth="148.0" text="Welcome" textFill="#e8e1e1">
+                     <font>
+                        <Font name="Rockwell Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="firstname" alignment="CENTER" prefHeight="37.0" prefWidth="198.0" styleClass="labelFirsrname" stylesheets="@newCascadeStyleSheet.css" text="Nedal">
+                     <font>
+                        <Font name="Rockwell Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="hboxSearch" alignment="CENTER" prefHeight="72.0" prefWidth="485.0">
+               <children>
+                  <ImageView fx:id="searchicon" fitHeight="36.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/search.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="searchbar" prefHeight="33.0" prefWidth="444.0" promptText="Search across your dashboard" styleClass="search" stylesheets="@newCascadeStyleSheet.css">
+                     <font>
+                        <Font name="Rockwell Bold" size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox fx:id="vboxSidebar" prefHeight="848.0" prefWidth="91.0" styleClass="borders" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hboxSpaceing" prefHeight="126.0" prefWidth="89.0" />
+            <ImageView fx:id="doctors" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#toDoctors" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/medical-team.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="patients" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#toPatient" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/patient.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="appointment" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#toAppointment" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/appointment.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="analytics" fitHeight="48.0" fitWidth="45.0" onMouseClicked="#drawChart" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/erp.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="200.0" left="20.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="chatbot" fitHeight="50.0" fitWidth="47.0" onMouseClicked="#showBot" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/chatbot.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="25.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="logout" fitHeight="63.0" fitWidth="51.0" onMouseClicked="#handleLogout" pickOnBounds="true" preserveRatio="true" styleClass="opacity_scale">
+               <image>
+                  <Image url="@../images/exit.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox fx:id="vboxDisplay" prefHeight="755.0" prefWidth="1163.0" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hboxTtile" prefHeight="77.0" prefWidth="1202.0">
+               <children>
+                  <Label fx:id="dashboardTitle" prefHeight="77.0" prefWidth="249.0" text="Clinic dashboard" textFill="#e8e1e1">
+                     <font>
+                        <Font name="Rockwell Bold" size="28.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="hboxCards" prefHeight="452.0" prefWidth="800.0" spacing="60.0">
+               <children>
+                  <VBox fx:id="vboxOut1" prefHeight="473.0" prefWidth="373.0" styleClass="bordersExternal" stylesheets="@newCascadeStyleSheet.css">
+                     <HBox.margin>
+                        <Insets left="20.0" right="15.0" />
+                     </HBox.margin>
+                     <children>
+                        <VBox fx:id="vboxIn1" alignment="CENTER" prefHeight="447.0" prefWidth="373.0" styleClass="bordersInternal" stylesheets="@newCascadeStyleSheet.css">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fx:id="bookAppointment" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="-30.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../images/appointment-book.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="labelrandom1" alignment="CENTER" prefHeight="64.0" prefWidth="288.0" text="Want to reserve an appointment quiclky? Click Add button below" textFill="#e8e1e1" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="35.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="buttonNewAppointment" alignment="CENTER" mnemonicParsing="false" onAction="#chandleCreateAppointment" prefHeight="47.0" prefWidth="296.0" styleClass="buttonNew" stylesheets="@newCascadeStyleSheet.css" text="Add" textFill="WHITE">
+                                 <font>
+                                    <Font name="Rockwell Bold" size="23.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vboxOut2" layoutX="50.0" layoutY="10.0" prefHeight="508.0" prefWidth="373.0" styleClass="bordersExternal" stylesheets="@newCascadeStyleSheet.css">
+                     <children>
+                        <VBox fx:id="vboxIn2" alignment="CENTER" prefHeight="447.0" prefWidth="373.0">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox fx:id="hboxUpcomingContainer" prefHeight="57.0" prefWidth="331.0">
+                                 <children>
+                                    <Label fx:id="upcomingTitle" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="275.0" text="Upcoming appointments" textFill="#dafcf4">
+                                       <font>
+                                          <Font name="Rockwell Bold" size="22.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="upcominTable" prefHeight="274.0" prefWidth="351.0">
+                                <columns>
+                                  <TableColumn fx:id="colPatient" prefWidth="119.0" text="Doctor" />
+                                  <TableColumn fx:id="colDoctor" prefWidth="119.0" text="Patient" />
+                                    <TableColumn fx:id="colTime" minWidth="0.0" prefWidth="108.0" text="Time" />
+                                </columns>
+                                 <VBox.margin>
+                                    <Insets top="8.0" />
+                                 </VBox.margin>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <Button fx:id="buttonRefreshTable" alignment="CENTER" mnemonicParsing="false" onAction="#handlerefreshTable" prefHeight="47.0" prefWidth="323.0" styleClass="buttonNew" stylesheets="@newCascadeStyleSheet.css" text="Refresh" textFill="WHITE">
+                                 <font>
+                                    <Font name="Rockwell Bold" size="23.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="vboxOut3" layoutX="50.0" layoutY="10.0" prefHeight="473.0" prefWidth="373.0" styleClass="bordersExternal" stylesheets="@newCascadeStyleSheet.css">
+                     <children>
+                        <VBox fx:id="vboxIn3" prefHeight="447.0" prefWidth="373.0" styleClass="bordersInternal" stylesheets="@newCascadeStyleSheet.css">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox fx:id="hboxAnalyticTitle" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="analyticTitle" alignment="BOTTOM_LEFT" prefHeight="51.0" prefWidth="250.0" styleClass="labelClinicAnalytics" stylesheets="@newCascadeStyleSheet.css" text="Clinic Analysis" textFill="#e8e1e1">
+                                       <font>
+                                          <Font name="Rockwell Bold" size="28.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="25.0" top="8.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <AnchorPane fx:id="anchPaneAnalyticChart" prefHeight="332.0" prefWidth="345.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="hboxChatbot" prefHeight="320.0" prefWidth="1202.0">
+               <children>
+                  <ScrollPane fx:id="scrollpaneChat" prefHeight="308.0" prefWidth="280.0" stylesheets="@newCascadeStyleSheet.css" visible="false">
+                    <content>
+                      <AnchorPane fx:id="anchChatBox" minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="293.0">
+                           <children>
+                              <TextField fx:id="textOutgoing" layoutX="35.0" layoutY="210.0" prefHeight="45.0" prefWidth="224.0" style="-fx-background-radius: 10px;" />
+                              <ImageView fx:id="sendChat" fitHeight="31.0" fitWidth="28.0" layoutX="5.0" layoutY="219.0" onMouseClicked="#handleSendchat" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/communication.png" />
+                                 </image></ImageView>
+                              <ImageView fx:id="bot" fitHeight="35.0" fitWidth="45.0" layoutX="224.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/chatbot.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="resp" fitHeight="32.0" fitWidth="32.0" layoutX="19.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/recepcionista.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="chatGenerated" contentDisplay="CENTER" layoutX="5.0" layoutY="114.0" prefHeight="49.0" prefWidth="219.0" styleClass="chatGenerated" stylesheets="@newCascadeStyleSheet.css" visible="false" wrapText="true">
+                                 <padding>
+                                    <Insets left="12.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="myRequest" layoutX="58.0" layoutY="32.0" prefHeight="50.0" prefWidth="210.0" styleClass="chatMine" stylesheets="@newCascadeStyleSheet.css" visible="false">
+                                 <padding>
+                                    <Insets left="12.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="30.0" top="7.0" />
+                     </HBox.margin>
+                  </ScrollPane>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>-->
